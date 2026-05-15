@@ -1,0 +1,233 @@
+/* Fondo general del formulario */
+.registro-container {
+  background-color: #000;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: white;
+  font-family: sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Logo en la esquina superior izquierda */
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+  max-width: 90%;
+}
+
+/* Título */
+.titulo {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 1px;
+  font-weight: normal;
+
+  text-shadow:
+    0px 0px 4px #000,
+    2px 2px 0px #000,
+    -2px -2px 0px #000;
+}
+
+/* Formulario general */
+.formulario {
+  width: 85%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Contenedor de cada campo */
+.campo {
+  margin-bottom: 22px;
+}
+
+/*Etiqueta*/
+.campo label {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Inputs y selects */
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  margin-top: 8px;
+  font-size: 18px;
+  outline: none;
+  background-color: white;
+  appearance: none;
+  box-sizing: border-box;
+
+  /* Color inicial */
+  color: #ff6a5c;
+
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Placeholder rojo-naranja */
+.campo input::placeholder {
+  color: #ff6a5c;
+  opacity: 1;
+}
+
+/* CUANDO EL USUARIO ESCRIBE*/
+.campo input:not(:placeholder-shown) {
+  color: #ff1500;
+}
+
+/* Select sin seleccionar */
+.campo select {
+  color: #ff6a5c;
+}
+
+/* Select con opción elegida */
+.campo select:valid {
+  color: #ff6a5c;
+}
+
+/* Opciones del menú */
+.campo select option {
+  color: #ff6a5c;
+}
+
+/* Flecha personalizada del select */
+.campo select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff6a5c' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 22px;
+  cursor: pointer;
+}
+
+/* Boton completar registro */
+.btn-registro {
+  display: block;
+  margin: 40px auto;
+  padding: 18px 50px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 1px;
+
+  background-color: #FF0000;
+  border: none;
+  border-radius: 40px;
+  text-shadow: none;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+
+  /* Animación controlada */
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-registro:hover {
+  transform: scale(1.1);
+  /* crecimiento más visible */
+  background-color: #bf0000;
+  box-shadow: 0px 0px 30px rgba(255, 48, 48, 0.6);
+}
+
+/* Animación al hacer click  */
+.btn-registro:active {
+  transform: scale(1.05);
+}
+
+
+/* Responsive */
+@media (max-width: 500px) {
+  .btn-registro {
+    width: 100%;
+    font-size: 24px;
+    padding: 14px 30px;
+  }
+}
+
+/* Contenedor para edad, estatura y peso */
+.campos-triple {
+  display: block;
+  /* Por defecto: uno debajo del otro */
+}
+
+/* SOLO pantallas grandes */
+@media (min-width: 900px) {
+  .campos-triple {
+    display: flex;
+    gap: 20px;
+    /* Espacio entre los 3 campos */
+  }
+
+  .campos-triple .campo {
+    flex: 1;
+    /* Los tres campos del mismo tamaño */
+    margin-bottom: 0;
+  }
+}
+
+/* Campo con error: parpadeo + zangoloteo controlado */
+.campo-error input,
+.campo-error select {
+  border: 2px solid #ff2b2b;
+  animation: blinkShake 1.2s ease-in-out;
+}
+
+/* Zangoloteo ordenado + parpadeo */
+@keyframes blinkShake {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 43, 43, 0);
+    transform: translateX(0);
+  }
+
+  15% {
+    box-shadow: 0 0 10px rgba(255, 43, 43, 0.8);
+    transform: translateX(-6px);
+  }
+
+  30% {
+    box-shadow: 0 0 0 rgba(255, 43, 43, 0);
+    transform: translateX(6px);
+  }
+
+  45% {
+    box-shadow: 0 0 10px rgba(255, 43, 43, 0.8);
+    transform: translateX(-4px);
+  }
+
+  60% {
+    box-shadow: 0 0 0 rgba(255, 43, 43, 0);
+    transform: translateX(4px);
+  }
+
+  75% {
+    box-shadow: 0 0 10px rgba(255, 43, 43, 0.6);
+    transform: translateX(-2px);
+  }
+
+  90% {
+    box-shadow: 0 0 0 rgba(255, 43, 43, 0);
+    transform: translateX(2px);
+  }
+
+  100% {
+    box-shadow: 0 0 0 rgba(255, 43, 43, 0);
+    transform: translateX(0);
+  }
+}

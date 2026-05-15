@@ -1,0 +1,105 @@
+/*  Eliminado :host para que funcione dentro del menú lateral */
+/* CONTENEDOR PRINCIPAL*/
+.lista-video {
+  height: 100%; 
+  background-color: #353434;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(14px, 3vw, 18px);
+  box-sizing: border-box;
+  width: 100%; 
+}
+/* LOGO */
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: clamp(16px, 3vw, 25px);
+}
+.logo-container img {
+  width: clamp(140px, 20vw, 190px);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+/* TÍTULO*/
+.titulo {
+  font-size: clamp(18px, 6.5vw, 23px);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  margin-bottom: clamp(6px, 1vw, 10px);
+  text-align: left;
+}
+/* LISTA */
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  margin-top: clamp(4px, 1vw, 10px);
+  flex: 1; 
+  padding-bottom: clamp(20px, 5vh, 40px);
+}
+/* ITEMS Lista */
+.lista li {
+  cursor: pointer;
+  padding: 4px 0;
+  line-height: 1.5;
+  font-size: clamp(13px, 4.5vw, 15px);
+  font-weight: 300;
+  letter-spacing: 0.9px;
+  transition: color 0.2s ease;
+  margin-bottom: clamp(2px, 0.8vh, 6px);
+  
+  //Animaciones para la lista de videos
+  transition: 
+    color 0.25s ease,
+    transform 0.25s ease,
+    font-weight 0.25s ease;
+}
+
+.lista li:hover {
+  color: #d60303d7;
+  transform: scale(1.07);
+  font-weight: 500;
+}
+
+/* ITEM ACTIVO */
+.lista li.activo {
+  color: #d30202;
+  transform: scale(1.07);
+  font-weight: 500;
+}
+/* FOOTER*/
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: clamp(12px, 3vh, 20px);   
+  padding-bottom: clamp(10px, 2vh, 18px); 
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+/* BOTÓN */
+.cerrar {
+  background: #f70f0f;           /* rojo principal */
+  color: #ffffff;                /* texto blanco */
+  border: 2px solid #f70f0f;     /* borde para poder invertir */
+  border-radius: 8px;            /* leve redondeo */
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: clamp(14px, 4.5vw, 16px);
+  font-weight: 500;
+
+  
+  transition: 
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+//animacion de colores inversos
+.cerrar:hover {
+  transform: scale(1.05);
+}
+/* RESPONSIVE - ELIMINADO EL MEDIA QUERY ANTERIOR YA QUE AHORA EL CONTENEDOR PADRE SE ENCARGA */

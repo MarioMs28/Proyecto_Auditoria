@@ -1,0 +1,26 @@
+/* FUENTES GLOBALES */
+
+@font-face {
+  font-family: 'Impact';
+  src: url('/assets/fonts/Impact.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'K2D-Regular';
+  src: url('/assets/fonts/K2D-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ESTILOS GLOBALES */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #000; /* fondo negro global */
+  min-height: 100vh; /* alto completo */
+}

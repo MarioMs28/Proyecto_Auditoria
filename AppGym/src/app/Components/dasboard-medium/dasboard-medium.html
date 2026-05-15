@@ -1,0 +1,66 @@
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="dashboard-container">
+  <!-- CONTENEDOR FILA -->
+  <div class="dashboard-row">
+    <!-- RECUADRO RANKING -->
+    <section class="ranking-card">
+      <!-- TITULO DEL RANKING -->
+      <h2 class="title" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        Ranking de usuarios
+      </h2>
+      <!-- LISTA DE USUARIOS -->
+      <div class="ranking-list">
+        <!-- USUARIO DEL RANKING -->
+        <div class="ranking-item" *ngFor="let user of rankingUsers">
+
+          <img src="/assets/images/dashboard/perfil.png" class="avatar" />
+
+          <p class="position" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+            {{ user.position }}° - {{ user.name }}
+          </p>
+
+          <p class="trophies" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+            {{ user.trophies }} Trofeos
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- RECUADRO CALENDARIO - INTERACTIVO -->
+    <aside class="calendar-card">
+      <!-- CABECERA: MES, AÑO Y FLECHAS -->
+      <div class="calendar-header">
+        <button class="nav-btn" (click)="prevMonth()">&lt;</button>
+        <div class="month-label">
+          {{ monthNames[currentMonth] }} {{ currentYear }}
+        </div>
+        <button class="nav-btn" (click)="nextMonth()">&gt;</button>
+      </div>
+      <!-- CONTROLES DE MES Y AÑO -->
+      <div class="calendar-controls">
+        <select [(ngModel)]="currentYear" (change)="generateCalendar()">
+          <option *ngFor="let y of yearOptions" [ngValue]="y">
+            {{ y }}
+          </option>
+        </select>
+
+        <select [(ngModel)]="currentMonth" (change)="generateCalendar()">
+          <option *ngFor="let m of monthOptions; let i = index" [ngValue]="i">
+            {{ m }}
+          </option>
+        </select>
+      </div>
+      <!-- DIAS DE LA SEMANA -->
+      <div class="week-days">
+        <span *ngFor="let wd of weekDays">{{ wd }}</span>
+      </div>
+      <!-- DIAS DEL MES -->
+      <div class="days">
+        <span *ngFor="let cell of calendarCells" [class.empty]="!cell" [class.active]="cell && isToday(cell)"
+          [class.selected]="cell && isSelected(cell)" [class.attendance]="cell && hasAttendance(cell)"
+          (click)="selectDay(cell)">
+          {{ cell?.day || '' }}
+        </span>
+      </div>
+    </aside>
+  </div>
+</div>

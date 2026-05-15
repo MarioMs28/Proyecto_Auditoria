@@ -1,0 +1,314 @@
+/* PALETA DEL PROYECTO */
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-red: #FF0000;
+$color-orange: #FF6C00;
+$color-green: #12E800;
+/* ===================================== */
+/* CONTENEDOR PRINCIPAL */
+/* ===================================== */
+.login-wrapper {
+  width: 100%;
+  min-height: 100dvh; // mucho mejor para móviles
+  background-image: url('/assets/images/login/Fondo principal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Capa oscura solo en el footer */
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.7) 100%);
+}
+/* ===================================== */
+/* CONTENIDO PRINCIPAL */
+/* ===================================== */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: $color-white;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* TÍTULO PRINCIPAL COMO IMAGEN */
+.title-image {
+  width: 100%;
+  max-width: 380px;
+  display: block;
+  margin: 0 auto 30px;
+  object-fit: contain;
+}
+/* ===================================== */
+/* FORMULARIO */
+/* ===================================== */
+.form-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  input {
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    width: 100%;
+    max-width: 420px;
+    font-size: 1rem;
+    /* Color del texto */
+    color: $color-red;
+    /* Color del placeholder */
+    &::placeholder {
+      color: rgba(255, 0, 0, 0.6);
+    }
+  }
+  .forgot {
+    font-size: 0.9rem;
+    color: $color-red;
+    margin-left: auto;
+    margin-top: -10px;
+    cursor: pointer;
+  }
+  .btn {
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    &.register {
+      background: transparent;
+      color: $color-white;
+      transition: transform 0.25s;
+    }
+    &.register:hover {
+      transform: translateY(-5px);
+    }
+    &.login {
+      background: $color-red;
+      color: $color-white;
+      transition: transform 0.25s;
+    }
+    &.login:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+.form-box .btn {
+  width: 100%;
+  max-width: 420px; // mismo ancho que los inputs
+}
+/* ===================================== */
+/* FOOTER */
+/* ===================================== */
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  color: $color-white;
+  z-index: 2;
+  cursor: pointer;
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+    animation: bounce 1.5s infinite ease-in-out;
+  }
+  .arrow {
+    font-size: 1rem;
+    display: block;
+    animation: bounce 1.5s infinite ease-in-out;
+  }
+}
+/*Animacion del salto de la flecha y texto de los planes*/
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+} 
+/* ===================================== */
+/* RESPONSIVE */
+/* ===================================== */
+@media (max-width: 768px) {
+  .title-image {
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+  .form-box {
+    gap: 14px;
+    input {
+      font-size: 0.9rem;
+      padding: 10px 16px;
+    }
+    .btn {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  }
+  .footer p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .content {
+    padding: 10px;
+    max-width: 90%;
+  }
+  .title-image {
+    max-width: 220px;
+  }
+  .form-box {
+    gap: 12px;
+    input {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+    }
+    .btn {
+      padding: 10px;
+      font-size: 0.95rem;
+    }
+  }
+  .footer {
+    bottom: 12px;
+  }
+}
+/* ================= ALERTA PREMIUM ================= */
+
+.alert-backdrop {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.85)
+  );
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+}
+
+/* Caja principal */
+.alert-box {
+  background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+  border-radius: 22px;
+  padding: 26px 24px 22px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  animation: alertIn 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    color: #2b2b2b;
+    margin: 10px 0 24px;
+  }
+}
+
+/* Botón cerrar (X) */
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.12);
+    transform: rotate(90deg);
+  }
+}
+
+/* Botón aceptar */
+.ok-btn {
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    lighten($color-red, 5%),
+    darken($color-red, 5%)
+  );
+  color: $color-white;
+  border: none;
+  border-radius: 32px;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(255, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(255, 0, 0, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+  }
+}
+
+/* Animación */
+@keyframes alertIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 480px) {
+  .alert-box {
+    padding: 22px 18px 20px;
+    border-radius: 18px;
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .ok-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+}

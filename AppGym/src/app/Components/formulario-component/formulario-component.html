@@ -1,0 +1,106 @@
+<div class="registro-container">
+  <!-- Contenedor principal del formulario de registro -->
+  <!-- Logo superior izquierdo -->
+  <div class="logo-container">
+    <img src="assets/images/formulario/FitManager.png" class="logo" alt="FitManager" />
+  </div>
+  <!-- Título -->
+  <h1 class="titulo">Formulario</h1>
+  <!-- Formulario -->
+  <form class="formulario" (ngSubmit)="completarRegistro()">
+    <!-- Nombre -->
+    <div class="campo campo-validable">
+      <label>Nombre</label>
+      <input type="text" placeholder="Ingresa tu nombre:" [(ngModel)]="usuario.nombreUsuario" name="nombre" />
+    </div>
+    <!-- Apellido -->
+    <div class="campo campo-validable">
+      <label>Apellido</label>
+      <input type="text" placeholder="Ingresa tu apellido:" [(ngModel)]="usuario.apellidosUsuario" name="apellido" />
+    </div>
+    <!-- Grupo de campos pequeños: Edad, Estatura y Peso -->
+    <div class="campos-triple">
+      <!-- Edad -->
+      <div class="campo campo-validable">
+        <label>Edad</label>
+        <input type="number" placeholder="Ingresa tu edad:" [(ngModel)]="usuario.edad" name="edad" />
+      </div>
+      <!-- Estatura -->
+      <div class="campo campo-validable">
+        <label>Estatura</label>
+        <input type="number" placeholder="Ingresa tu estatura en cm:" [(ngModel)]="usuario.estaturaCm" name="estatura"
+          min="100" max="200" step="1" />
+      </div>
+      <!-- Peso -->
+      <div class="campo campo-validable">
+        <label>Peso</label>
+        <input type="number" placeholder="Ingresa tu peso, ejem 65.7:" [(ngModel)]="usuario.peso" name="peso" />
+      </div>
+    </div>
+    <!-- Tipo de cuerpo -->
+    <div class="campo campo-validable">
+      <label>Tipo de cuerpo</label>
+      <select [(ngModel)]="usuario.tipoCuerpo" name="tipoCuerpo" required>
+        <option value="" disabled>
+          Selecciona tu tipo de cuerpo
+        </option>
+        <option value="Delgado">Delgado</option>
+        <option value="Atletico">Atlético</option>
+        <option value="Robusto">Robusto</option>
+      </select>
+    </div>
+    <!-- Objetivo -->
+    <div class="campo campo-validable">
+      <label>Selecciona el objetivo por el cual quieres entrar</label>
+      <select [(ngModel)]="usuario.objetivo" name="objetivo" required>
+        <option value="" disabled>
+          Selecciona tu objetivo
+        </option>
+        <option>Subir masa muscular</option>
+        <option>Perder peso / reducir grasa corporal</option>
+        <option>Mejorar resistencia física</option>
+        <option>Tonificar el cuerpo</option>
+        <option>Mejorar salud cardiovascular</option>
+        <option>Incrementar fuerza</option>
+        <option>Reducir estrés y mejorar bienestar</option>
+        <option>Prepararse para competencia / deporte</option>
+        <option>Rehabilitación física básica</option>
+        <option>Mantenerse activo</option>
+      </select>
+    </div>
+    <!-- Frecuencia -->
+    <div class="campo campo-validable">
+      <label>Frecuencia de tu asistencia</label>
+      <select [(ngModel)]="usuario.frecuenciaAsistencia" name="frecuencia" required>
+        <option value="" disabled>
+          Selecciona tu asistencia
+        </option>
+        <option>Ocasional (1 vez por semana)</option>
+        <option>Moderada (2-3 veces por semana)</option>
+        <option>Constante (4-5 veces por semana)</option>
+        <option>Intensa (6-7 veces por semana)</option>
+      </select>
+    </div>
+    <!-- Tipo de alimentación -->
+    <div class="campo campo-validable">
+      <label>Tipo de alimentación</label>
+      <select [(ngModel)]="usuario.tipoAlimentacion" name="alimentacion" required>
+        <option value="" disabled>
+          Selecciona tu nivel de alimentación
+        </option>
+        <option>
+          Balanceada (mezcla de todos los grupos: proteínas, carbohidratos, grasas saludables)
+        </option>
+        <option>Alta en proteínas (pensada para ganar músculo)</option>
+        <option>Baja en carbohidratos (keto, cetogénica o similar)</option>
+        <option>Vegetariana</option>
+        <option>Vegana</option>
+        <option>Flexible / Sin plan específico</option>
+      </select>
+    </div>
+    <!-- Botón Completar registro -->
+    <button class="btn-registro" type="submit">
+      Completar registro
+    </button>
+  </form>
+</div>
