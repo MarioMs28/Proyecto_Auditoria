@@ -33,8 +33,13 @@ html, body {
    Naranja (#FF6C00) -> Cyan (#00BCD4)
    ========================================================= */
 body.daltonismo {
+  /* Filtro global para cambiar el tono rojo de las imágenes a azul */
+  img {
+    filter: hue-rotate(215deg) !important;
+  }
+
   /* Textos y bordes rojos -> azules */
-  .red, .precio-rojo, .rojo, .fit, .profile-role, .value, .calendar-card h3, .trophies, .nav-btn, .campo input, .campo select, .campo select option, .price-red {
+  .red, .precio-rojo, .rojo, .fit, .profile-role, .value, .calendar-card h3, .trophies, .nav-btn, .campo input, .campo select, .campo select option, .price-red, .forgot, .form-box input {
     color: #2979FF !important;
   }
   
@@ -42,11 +47,11 @@ body.daltonismo {
     border-color: #2979FF !important;
   }
   
-  .campo input::placeholder {
+  .campo input::placeholder, .form-box input::placeholder {
     color: #2979FF !important;
   }
 
-  .campo input:not(:placeholder-shown) {
+  .campo input:not(:placeholder-shown), .form-box input:not(:placeholder-shown) {
     color: #0c4da2 !important; /* un azul mas oscuro */
   }
 
