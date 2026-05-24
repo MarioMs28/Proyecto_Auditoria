@@ -1,4 +1,8 @@
 <div class="login-wrapper">
+  <!-- Botón de Daltonismo -->
+  <button class="btn-daltonismo" (click)="toggleDaltonismo()" title="Modo Accesibilidad (Daltonismo)" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">
+    Modo daltónico
+  </button>
   <div class="overlay"></div>
   <div class="content">
     <img src="/assets/images/login/Fit manager.png" class="title-image" />

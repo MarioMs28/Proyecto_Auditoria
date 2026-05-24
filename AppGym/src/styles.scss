@@ -24,3 +24,108 @@ html, body {
   background: #000; /* fondo negro global */
   min-height: 100vh; /* alto completo */
 }
+
+/* =========================================================
+   ESTILOS GLOBALES PARA DALTONISMO (DEUTERANOPIA)
+   Reemplazo de colores: 
+   Rojo (#FF0000) -> Azul (#2979FF)
+   Verde (#12E800) -> Amarillo (#FFD600)
+   Naranja (#FF6C00) -> Cyan (#00BCD4)
+   ========================================================= */
+body.daltonismo {
+  /* Textos y bordes rojos -> azules */
+  .red, .precio-rojo, .rojo, .fit, .profile-role, .value, .calendar-card h3, .trophies, .nav-btn, .campo input, .campo select, .campo select option, .price-red {
+    color: #2979FF !important;
+  }
+  
+  .nav-btn, .avatar, .campo input, .campo select, app-membresia input {
+    border-color: #2979FF !important;
+  }
+  
+  .campo input::placeholder {
+    color: #2979FF !important;
+  }
+
+  .campo input:not(:placeholder-shown) {
+    color: #0c4da2 !important; /* un azul mas oscuro */
+  }
+
+  /* Inputs de membresía tienen fondo azul, necesitan texto blanco */
+  app-membresia input {
+    color: #ffffff !important;
+  }
+  
+  app-membresia input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  /* Select custom arrow */
+  .campo select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%232979FF' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") !important;
+  }
+
+  /* Fondos rojos -> azules */
+  .btn.login, .ok-btn, .btn-contratar, .btn-cancelar, .btn-pagar, .btn-registro, .play-btn, .btn-help, .days span.attendance, app-membresia input {
+    background: #2979FF !important;
+    background-color: #2979FF !important;
+  }
+  
+  .ok-btn, .btn-registro {
+    background: linear-gradient(135deg, lighten(#2979FF, 5%), darken(#2979FF, 5%)) !important;
+    box-shadow: 0 6px 14px rgba(41, 121, 255, 0.35) !important;
+  }
+  
+  .menu-btn span {
+    background: #2979FF !important;
+  }
+  
+  .end-btn {
+    color: #2979FF !important;
+  }
+  
+  .cerrar {
+    background: #2979FF !important;
+    border-color: #2979FF !important;
+  }
+  
+  .lista li:hover, .lista li.activo {
+    color: #2979FF !important;
+  }
+
+  /* Gradientes background que incluyen rojo -> azul */
+  app-dasboard .page-container {
+    background: linear-gradient(to bottom, #000 30%, #2979FF 90%) !important;
+  }
+  
+  .page-background {
+    background: linear-gradient(to bottom, #000000, #0c2d6ddc) !important;
+  }
+
+  /* Verde -> Amarillo */
+  .days span.active:not(.attendance) {
+    background: #FFD600 !important;
+    color: #000 !important;
+  }
+  
+  .progress-wrapper input[type="range"] {
+    accent-color: #FFD600 !important;
+  }
+  
+  .green {
+    color: #FFD600 !important;
+  }
+
+  /* Naranja -> Cyan */
+  .days span.selected {
+    background: #00BCD4 !important;
+    color: #fff !important;
+  }
+  
+  .orange {
+    color: #00BCD4 !important;
+  }
+  
+  .time {
+    color: #00BCD4 !important;
+  }
+}

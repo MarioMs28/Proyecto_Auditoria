@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
+import { DaltonismoService } from '../../Services/DaltonismoService';
 @Component({
   selector: 'app-login-up',
   imports: [CommonModule, FormsModule],
@@ -19,7 +20,20 @@ export class LoginUp {
   contrasena: string = '';
   mostrarAlerta = false;
   mensajeAlerta = '';
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService, 
+    private router: Router,
+    private daltonismoService: DaltonismoService
+  ) { }
+  
+  toggleDaltonismo() {
+    this.daltonismoService.toggleDaltonismo();
+  }
+  
+  isDaltonismoActivo() {
+    return this.daltonismoService.isDaltonismoActivo();
+  }
+  
   login() {
     // Validación campos vacíos
     if (!this.correo || !this.contrasena) {
