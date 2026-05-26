@@ -70,6 +70,10 @@ export class LoginUp {
     }
     // Guardar usuario global
     this.userService.guardarUsuarioActual(usuario);
+    
+    // Notificar inicio de sesión
+    this.userService.notificarInicioSesion(this.correo);
+
     // Redirecciones
     this.router.navigate(['/dashboard']);
   }
@@ -126,6 +130,10 @@ export class LoginUp {
     this.userService.agregarUsuario(nuevoUsuario);
     // Guardar como usuario actual
     this.userService.guardarUsuarioActual(nuevoUsuario);
+    
+    // Notificar inicio de sesión (registro es cuenta nueva y logueada)
+    this.userService.notificarInicioSesion(this.correo);
+
     // Ir al formulario para completar perfil
     this.router.navigate(['/formulario']);
   }
