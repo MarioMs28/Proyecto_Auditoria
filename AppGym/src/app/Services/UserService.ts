@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { UserInterface } from '../../interfaces/UserInterface';
 
 @Injectable({
@@ -137,6 +140,25 @@ export class UserService {
     ];
     // Usuario logueado (usuario actual)
     usuarioActual: UserInterface | null = null;
+    
+    constructor(private http: HttpClient) {}
+
+    // Notificar inicio de sesión al servidor Node.js
+    notificarInicioSesion(correoUsuario: string): void {
+        const payload = {
+            email: correoUsuario,
+            date: new Date().toLocaleString()
+        };
+        this.http.post('http://localhost:3000/api/notify-login', payload)
+            .pipe(
+                catchError(error => {
+                    console.error('Error al notificar al servidor:', error);
+                    return of(null);
+                })
+            )
+            .subscribe();
+    }
+
     // Obtener todos los usuarios
     obtenerUsuarios(): UserInterface[] {
         return this.usuarios;
