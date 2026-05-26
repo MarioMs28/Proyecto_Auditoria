@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
+import { DaltonismoService } from '../../Services/DaltonismoService';
 @Component({
   selector: 'app-login-up',
   imports: [CommonModule, FormsModule],
@@ -19,13 +20,33 @@ export class LoginUp {
   contrasena: string = '';
   mostrarAlerta = false;
   mensajeAlerta = '';
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService, 
+    private router: Router,
+    private daltonismoService: DaltonismoService
+  ) { }
+  
+  toggleDaltonismo() {
+    this.daltonismoService.toggleDaltonismo();
+  }
+  
+  isDaltonismoActivo() {
+    return this.daltonismoService.isDaltonismoActivo();
+  }
+  
   login() {
     // Validación campos vacíos
     if (!this.correo || !this.contrasena) {
       this.mostrarMensaje('Debes llenar todos los campos');
       return;
     }
+    
+    // Login para el administrador
+    if (this.correo === 'admin@gmail.com' && this.contrasena === 'admin123') {
+      this.router.navigate(['/admin-dashboard']);
+      return;
+    }
+
     // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
       this.mostrarMensaje('Ingresa un correo electrónico válido');
@@ -58,6 +79,13 @@ export class LoginUp {
       this.mostrarMensaje('Debes llenar todos los campos');
       return;
     }
+    
+    // Evitar registrar el correo del administrador
+    if (this.correo === 'admin@gmail.com') {
+      this.mostrarMensaje('No puedes registrar este correo');
+      return;
+    }
+
     // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
       this.mostrarMensaje('Ingresa un correo electrónico válido');
