@@ -1,0 +1,68 @@
+<div class="admin-container">
+  <div class="header">
+    <div class="header-left">
+      <img src="assets/images/membresia/FitManager.png" alt="FitManager" class="logo" />
+      <h1 class="title" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        Panel de Administración
+      </h1>
+    </div>
+    <div class="header-right">
+      <div class="tarjeta-salir" (click)="cerrarSesion()">
+        <img src="assets/images/dashboard/salir.png" class="icon-salir" alt="salir" />
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2 class="subtitle" [ngStyle]="{'font-family': getFont(customFonts.K2D_REGULAR)}">
+      Usuarios Registrados ({{ usuarios.length }})
+    </h2>
+
+    <div class="users-grid">
+      <div class="user-card" *ngFor="let user of usuarios">
+        <div class="card-header">
+          <img src="assets/images/dashboard/perfil.png" class="avatar" alt="perfil" />
+          <div class="user-info">
+            <h3 [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+              {{ user.nombreUsuario || 'Sin Nombre' }} {{ user.apellidosUsuario || '' }}
+            </h3>
+            <p class="email" [ngStyle]="{'font-family': getFont(customFonts.K2D_REGULAR)}">
+              {{ user.correo }}
+            </p>
+          </div>
+        </div>
+
+        <div class="card-body" [ngStyle]="{'font-family': getFont(customFonts.K2D_REGULAR)}">
+          <div class="status-row">
+            <span class="label">Registro:</span>
+            <span class="value" [class.red]="!user.registroCompleto" [class.green]="user.registroCompleto">
+              {{ user.registroCompleto ? 'Completo' : 'Incompleto' }}
+            </span>
+          </div>
+
+          <div class="status-row">
+            <span class="label">Plan:</span>
+            <span class="value" [class.red]="!user.planActivo" [class.green]="user.planActivo">
+              {{ user.planActivo ? (user.planAsociado?.nombrePlan || 'Activo') : 'Inactivo' }}
+            </span>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <span class="metric-value">{{ user.asistencias?.length || 0 }}</span>
+              <span class="metric-label">Asistencias</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">{{ user.trofeos || 0 }}</span>
+              <span class="metric-label">Trofeos</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">{{ user.caloriasQuemadas || 0 }}</span>
+              <span class="metric-label">Calorías</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

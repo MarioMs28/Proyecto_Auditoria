@@ -1,0 +1,188 @@
+.admin-container {
+  background-color: #000;
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.title {
+  font-size: 32px;
+  margin: 0;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.tarjeta-salir {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #000;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.icon-salir {
+  height: 24px;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #ccc;
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.user-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: #ff0000;
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ff0000;
+}
+
+.user-info {
+  h3 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+  }
+  .email {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #999;
+  }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  
+  .label {
+    color: #bbb;
+  }
+  .value {
+    font-weight: bold;
+  }
+}
+
+.red {
+  color: #ff0000;
+}
+.green {
+  color: #12E800;
+}
+
+.metrics {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #333;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .metric-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+  .metric-label {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .logo {
+    width: 120px;
+  }
+}

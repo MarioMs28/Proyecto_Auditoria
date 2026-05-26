@@ -40,6 +40,13 @@ export class LoginUp {
       this.mostrarMensaje('Debes llenar todos los campos');
       return;
     }
+    
+    // Login para el administrador
+    if (this.correo === 'admin@gmail.com' && this.contrasena === 'admin123') {
+      this.router.navigate(['/admin-dashboard']);
+      return;
+    }
+
     // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
       this.mostrarMensaje('Ingresa un correo electrónico válido');
@@ -72,6 +79,13 @@ export class LoginUp {
       this.mostrarMensaje('Debes llenar todos los campos');
       return;
     }
+    
+    // Evitar registrar el correo del administrador
+    if (this.correo === 'admin@gmail.com') {
+      this.mostrarMensaje('No puedes registrar este correo');
+      return;
+    }
+
     // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
       this.mostrarMensaje('Ingresa un correo electrónico válido');
