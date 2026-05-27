@@ -10,9 +10,7 @@ import { UserInterface } from '../../interfaces/UserInterface';
 export class UserService {
     // Arreglo global de usuarios
     private usuarios: UserInterface[] = [
-        // ============================================
         // USUARIO ADMINISTRADOR (acceso al panel admin)
-        // ============================================
         {
             correo: 'admin@gmail.com',
             contrasena: 'admin123',
