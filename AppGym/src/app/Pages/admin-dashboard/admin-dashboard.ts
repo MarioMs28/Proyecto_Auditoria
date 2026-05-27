@@ -26,7 +26,7 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // Obtener todos los usuarios registrados excluyendo una posible cuenta admin en el mock
-    this.usuarios = this.userService.obtenerUsuarios().filter(u => u.correo !== 'admin@gmail.com');
+    this.usuarios = this.userService.obtenerUsuariosSinAdmin();
   }
 
   cerrarSesion(): void {

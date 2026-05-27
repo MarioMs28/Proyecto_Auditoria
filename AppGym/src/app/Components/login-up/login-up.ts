@@ -21,29 +21,23 @@ export class LoginUp {
   mostrarAlerta = false;
   mensajeAlerta = '';
   constructor(
-    private userService: UserService, 
+    private userService: UserService,
     private router: Router,
     private daltonismoService: DaltonismoService
   ) { }
-  
+
   toggleDaltonismo() {
     this.daltonismoService.toggleDaltonismo();
   }
-  
+
   isDaltonismoActivo() {
     return this.daltonismoService.isDaltonismoActivo();
   }
-  
+
   login() {
     // Validación campos vacíos
     if (!this.correo || !this.contrasena) {
       this.mostrarMensaje('Debes llenar todos los campos');
-      return;
-    }
-    
-    // Login para el administrador
-    if (this.correo === 'admin@gmail.com' && this.contrasena === 'admin123') {
-      this.router.navigate(['/admin-dashboard']);
       return;
     }
 
@@ -52,41 +46,44 @@ export class LoginUp {
       this.mostrarMensaje('Ingresa un correo electrónico válido');
       return;
     }
+
+    // Buscar usuario en el servicio
     const usuario = this.userService.buscarUsuario(this.correo, this.contrasena);
-    //  Usuario no existe
+
+    // Usuario no existe
     if (!usuario) {
-      this.mostrarMensaje('contraseña invalida')
+      this.mostrarMensaje('Correo o contraseña inválidos');
       return;
     }
+
     // Validar vencimiento del plan
     if (usuario.planActivo && usuario.fechaExpiracionPlan) {
       const today = new Date();
       if (today > usuario.fechaExpiracionPlan) {
         this.mostrarMensaje(
-          'Error, detectamos que no has renovado tu membresía, por favor renuévala y vuelve a entrar.'
+          'Error, detectamos que no has renovado tu membresía, por favor renúevala y vuelve a entrar.'
         );
         return;
       }
     }
+
     // Guardar usuario global
     this.userService.guardarUsuarioActual(usuario);
-    
+
     // Notificar inicio de sesión
     this.userService.notificarInicioSesion(this.correo);
 
-    // Redirecciones
-    this.router.navigate(['/dashboard']);
+    // Redirigir según el rol del usuario (definido en UserService)
+    if (usuario.rol === 'admin') {
+      this.router.navigate(['/admin-dashboard']);
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
   }
   register() {
     // Campos vacíos
     if (!this.correo || !this.contrasena) {
       this.mostrarMensaje('Debes llenar todos los campos');
-      return;
-    }
-    
-    // Evitar registrar el correo del administrador
-    if (this.correo === 'admin@gmail.com') {
-      this.mostrarMensaje('No puedes registrar este correo');
       return;
     }
 
@@ -106,6 +103,7 @@ export class LoginUp {
     const nuevoUsuario: UserInterface = {
       correo: this.correo,
       contrasena: this.contrasena,
+      rol: 'usuario',
       nombreUsuario: undefined,
       apellidosUsuario: undefined,
       edad: undefined,
@@ -130,7 +128,7 @@ export class LoginUp {
     this.userService.agregarUsuario(nuevoUsuario);
     // Guardar como usuario actual
     this.userService.guardarUsuarioActual(nuevoUsuario);
-    
+
     // Notificar inicio de sesión (registro es cuenta nueva y logueada)
     this.userService.notificarInicioSesion(this.correo);
 

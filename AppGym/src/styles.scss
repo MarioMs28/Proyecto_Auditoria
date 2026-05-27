@@ -38,7 +38,8 @@ body {
 body.daltonismo {
 
   /* Filtro global para cambiar el tono rojo de las imágenes a azul */
-  img {
+  /* .profile-icon usa background-image en un div, no <img>, por eso se incluye explícitamente */
+  img, .profile-icon {
     filter: hue-rotate(215deg) !important;
   }
 
