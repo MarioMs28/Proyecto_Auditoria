@@ -7,6 +7,8 @@ export interface UserInterface {
   // Credenciales
   correo: string;
   contrasena: string;
+  // Rol del usuario en el sistema
+  rol?: 'admin' | 'usuario';
   // Información personal
   nombreUsuario?: string;
   apellidosUsuario?: string;

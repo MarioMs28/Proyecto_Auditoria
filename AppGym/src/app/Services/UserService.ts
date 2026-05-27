@@ -10,9 +10,40 @@ import { UserInterface } from '../../interfaces/UserInterface';
 export class UserService {
     // Arreglo global de usuarios
     private usuarios: UserInterface[] = [
+        // ============================================
+        // USUARIO ADMINISTRADOR (acceso al panel admin)
+        // ============================================
+        {
+            correo: 'admin@gmail.com',
+            contrasena: 'admin123',
+            rol: 'admin',
+            nombreUsuario: 'Administrador',
+            apellidosUsuario: 'FitManager',
+            edad: undefined,
+            estaturaCm: undefined,
+            tipoCuerpo: undefined,
+            objetivo: undefined,
+            frecuenciaAsistencia: undefined,
+            tipoAlimentacion: undefined,
+            frecuenciaCardiaca: undefined,
+            oxigenacion: undefined,
+            trofeos: undefined,
+            caloriasQuemadas: undefined,
+            planActivo: false,
+            rutinaActiva: undefined,
+            asistencias: undefined,
+            planAsociado: undefined,
+            metodoPago: undefined,
+            fechaCompraPlan: undefined,
+            fechaExpiracionPlan: undefined,
+        },
+        // ============================================
+        // USUARIOS DE PRUEBA
+        // ============================================
         {
             correo: 'prueba1@gmail.com',
             contrasena: '1234',
+            rol: 'usuario',
             nombreUsuario: 'Prueba',
             apellidosUsuario: 'Prueba1',
             edad: 18,
@@ -36,6 +67,7 @@ export class UserService {
         {
             correo: 'prueba2@gmail.com',
             contrasena: '1234',
+            rol: 'usuario',
             nombreUsuario: 'Prueba',
             apellidosUsuario: 'Prueba2',
             edad: 18,
@@ -69,6 +101,7 @@ export class UserService {
         {
             correo: 'prueba3@gmail.com',
             contrasena: '1234',
+            rol: 'usuario',
             nombreUsuario: 'Prueba',
             apellidosUsuario: 'Prueba3',
             edad: 18,
@@ -142,6 +175,16 @@ export class UserService {
     usuarioActual: UserInterface | null = null;
     
     constructor(private http: HttpClient) {}
+
+    // Verificar si un usuario es administrador
+    isAdmin(correo: string): boolean {
+        return correo === 'admin@gmail.com';
+    }
+
+    // Obtener todos los usuarios (excluye al admin del listado público)
+    obtenerUsuariosSinAdmin(): UserInterface[] {
+        return this.usuarios.filter(u => u.correo !== 'admin@gmail.com');
+    }
 
     // Notificar inicio de sesión al servidor Node.js
     notificarInicioSesion(correoUsuario: string): void {
