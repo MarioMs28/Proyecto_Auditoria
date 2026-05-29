@@ -35,9 +35,7 @@ export class UserService {
             fechaCompraPlan: undefined,
             fechaExpiracionPlan: undefined,
         },
-        // ============================================
-        // USUARIOS DE PRUEBA
-        // ============================================
+        // usuarios de prueba (usuarios normales)
         {
             correo: 'prueba1@gmail.com',
             contrasena: '1234',
@@ -171,8 +169,8 @@ export class UserService {
     ];
     // Usuario logueado (usuario actual)
     usuarioActual: UserInterface | null = null;
-    
-    constructor(private http: HttpClient) {}
+
+    constructor(private http: HttpClient) { }
 
     // Verificar si un usuario es administrador
     isAdmin(correo: string): boolean {

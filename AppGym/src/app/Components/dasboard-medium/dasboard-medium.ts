@@ -83,8 +83,8 @@ export class DasboardMedium implements OnInit {
   /* LOGICA DE NEGOCIO - RANKING (CUMPLE EXACTO EL JIRA) */
   generarRanking(): void {
 
-    /* OBTENER TODOS LOS USUARIOS */
-    const usuarios: UserInterface[] = this.userService.obtenerUsuarios();
+    /* OBTENER TODOS LOS USUARIOS (Sin el Admin) */
+    const usuarios: UserInterface[] = this.userService.obtenerUsuariosSinAdmin();
 
     /* ORDENAR POR TROFEOS DE MAYOR A MENOR */
     const usuariosOrdenados = [...usuarios].sort(
