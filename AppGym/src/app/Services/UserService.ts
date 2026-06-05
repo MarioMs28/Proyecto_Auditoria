@@ -173,13 +173,13 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     // Verificar si un usuario es administrador
-    isAdmin(correo: string): boolean {
-        return correo === 'admin@gmail.com';
+    isAdmin(usuario: UserInterface): boolean {
+        return usuario.rol === 'admin';
     }
 
-    // Obtener todos los usuarios (excluye al admin del listado público)
+    // Obtener todos los usuarios (excluye a los administradores del listado público)
     obtenerUsuariosSinAdmin(): UserInterface[] {
-        return this.usuarios.filter(u => u.correo !== 'admin@gmail.com');
+        return this.usuarios.filter(u => u.rol !== 'admin');
     }
 
     // Notificar inicio de sesión al servidor Node.js
